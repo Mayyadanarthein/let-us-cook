@@ -1,15 +1,18 @@
 # let-us-cook
-Let Us Cook 🍳🥘
+**Let Us Cook 🍳🥘**
 Where Memes Meet Meals
 
 About
 Ready to turn "Let us cook" from a meme into a reality? This isn't just another recipe collection – it's your ticket to actually getting in the kitchen and whipping up some amazing Asian dishes!
 
-Here's what's cooking:
+**Here's what's cooking:**
 
 A smorgasbord of authentic Asian recipes, ready for you to tackle
+
 Daily specials to spice up your culinary adventures
+
 A craving-matcher that finds the perfect recipe for your mood
+
 Clean, responsive interface built with JavaScript, HTML, and CSS
 
 Getting Started
