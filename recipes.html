@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="bitmoji">
+        <img src="bitmoji.png" alt="My Bitmoji">
+    </div>
+</header>
+
+<main>
+    <section class="recipe-detail">
+        <div class="recipe-image">
+            <img src="" alt="">
+        </div>
+        <div class="recipe-info">
+            <h2></h2>
+            <p></p>
+            <div class="recipe-bitmoji">
+                <img src="bitmoji.png" alt="Recipe Bitmoji">
+            </div>
+        </div>
+    </section>
+
+    <section class="related-recipes">
+        <h2>Related Recipes</h2>
+        <div class="recipe-cards"></div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2023 Recipe Catalog. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script src="data.js"></script>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const recipeId = urlParams.get('id');
+    const recipe = recipeData.find(r => r.id === parseInt(recipeId));
+
+    const recipeImage = document.querySelector('.recipe-image img');
+    const recipeTitle = document.querySelector('.recipe-info h2');
+    const recipeDescription = document.querySelector('.recipe-info p');
+
+    recipeImage.src = recipe.image;
+    recipeImage.alt = recipe.name;
+    recipeTitle.textContent = recipe.name;
+    recipeDescription.textContent = recipe.description;
+
+    // Create related recipes
+    const relatedRecipes = recipeData.filter(r => r.id !== recipe.id).slice(0, 3);
+    const relatedRecipeCards = document.querySelector('.related-recipes .recipe-cards');
+
+    relatedRecipes.forEach(r => {
+        const recipeCard = document.createElement('div');
+        recipeCard.classList.add('recipe-card');
+        recipeCard.addEventListener('click', () => {
+            window.location.href = `recipes.html?id=${r.id}`;
+        });
+
+        const img = document.createElement('img');
+        img.src = r.image;
+        img.alt = r.name;
+
+        const title = document.createElement('h3');
+        title.textContent = r.name;
+
+        recipeCard.appendChild(img);
+        recipeCard.appendChild(title);
+        relatedRecipeCards.appendChild(recipeCard);
+    });
+</script>
+</body>
+</html>
